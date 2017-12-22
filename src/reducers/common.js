@@ -47,6 +47,12 @@ export default (
         ...state,
         redirectTo: '/'
       } 
+    case 'ARTICLE_SUBMITTED':
+      const redirectUrl = `/articles/${payload.article.slug}`
+      return {
+        ...state,
+        redirectTo: redirectUrl
+      }
     default:
       return state
   }
