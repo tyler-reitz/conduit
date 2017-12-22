@@ -1,6 +1,6 @@
 export default (state = {}, action) => {
-  const { type, error, payload } = action
-  
+  const { type, subtype, error, payload } = action
+
   switch (type) {
     case 'SETTINGS_SAVED':
       return {
@@ -9,15 +9,11 @@ export default (state = {}, action) => {
         errors: error ? payload.errors : null
       }
     case 'ASYNC_START':
-      return {
-        ...state,
-        inProgress: true
-      }
-    case 'APP_LOAD':
-    case 'HOME_PAGE_LOAD':
-      return {
-        ...state,
-        inProgress: false
+      if (subtype === 'SETTINGS_SAVED') {
+        return {
+          ...state,
+          inProgress: true
+        }
       }
     default:
       return state

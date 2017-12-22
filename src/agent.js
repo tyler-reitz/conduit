@@ -3,7 +3,9 @@ import superagentPromise from 'superagent-promise'
 
 const superagent = superagentPromise(_superagent, global.Promise)
 
-const API_ROOT = 'http://localhost:8000/api'
+// const API_ROOT = 'http://localhost:8000/api'
+// const API_ROOT = 'https://limitless-ocean-71060.herokuapp.com/api'
+const API_ROOT = '/api'
 
 const responseBody = res => res.body
 
@@ -23,6 +25,7 @@ const requests = {
 
 const limit = (count, p) => `limit=${count}&offset=${p ? p * count : 0}`
 const encode = encodeURIComponent
+const omitSlug = article => ({ ...article, slug: undefined })
 const Articles = {
   all: page => 
     requests.get(`/articles?${limit(10, page)}`),
@@ -38,6 +41,10 @@ const Articles = {
     requests.get(`/articles/${slug}`),
   del: slug => 
     requests.del(`/articles/${slug}`),
+  update: article =>
+    requests.put(`/articles/${article.slug}`, { article: omitSlug(article) }),
+  create: article =>
+    requests.post('/articles', { article })
 }
 
 const Auth = {
@@ -61,7 +68,7 @@ const Profile = {
 
 const Tag = {
   getAll: tag =>
-    requests.get(`/tags`)
+    requests.get('/tags')
 }
 
 export default {

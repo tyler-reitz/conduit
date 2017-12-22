@@ -11,6 +11,7 @@ import Settings from './Settings'
 import Article from './Article'
 import Profile from './Profile'
 import ProfileFavorites from './ProfileFavorites'
+import Editor from './Editor'
 
 
 const mapStateToProps = state => ({
@@ -57,9 +58,10 @@ class App extends React.Component {
             <Route path="/login" component={Login} />
             <Route path="/register" component={Register} />
             <Route path="/settings" component={Settings} />
-            <Route path="/article/:id"  component={Article} />
+            <Route path="/articles/:id?"  component={Article} />
             <Route exact path="/profiles/:username" component={Profile} />
             <Route exact path="/profiles/:username/favorites" component={ProfileFavorites} />
+            <Route path="/editor/:slug?" component={Editor}/>
           </div>
         )}
       </div>
