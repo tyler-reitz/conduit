@@ -10,7 +10,9 @@ const promiseMiddleware = store => next => action => {
       },
       error => {
         action.error = true
-        action.payload = error.response.body
+        action.payload = error.response.body 
+          ? error.response.body 
+          : { error: error.response.statusText }
         store.dispatch(action)
       }
     )

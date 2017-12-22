@@ -15,7 +15,7 @@ const ArticleActions = ({article, canModify, onClickDelete}) => {
     return (
       <div>
         <Link 
-          to={`/editor/{article.slug}`} 
+          to={`/editor/${article.slug}`} 
           className="btn btn-outline-secondary btn-sm"
         >
           <i className="ion-edit"></i> Edit Article
