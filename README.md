@@ -5,7 +5,8 @@
 > A Medium-like Bloggin Application
 
 TODO: Fill out this long description.
-![]('/docs/limitless-ocean-71060.herokuapp.com_.png')
+
+![](./docs/limitless-ocean-71060.herokuapp.com_.png)
 
 ## Table of Contents
 
